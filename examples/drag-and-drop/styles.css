@@ -13,9 +13,20 @@ body {
 	height: 100px;
 	width: 100px;
 	line-height: 100px;
-	background-color: red;
 	color: white;
 	text-align: center;
 	cursor: grab;
 	user-select: none;
+}
+
+.box--red {
+	background-color: red;
+}
+
+.box--green {
+	background-color: green;
+}
+
+.box--blue {
+	background-color: blue;
 }
