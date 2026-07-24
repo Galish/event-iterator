@@ -64,9 +64,3 @@ These examples show how common browser interactions can be expressed as asynchro
 This repository is an experiment and a playground for exploring event-driven programming with native JavaScript async iterators.
 
 The API is intentionally small and may evolve as different ideas, patterns, and use cases are explored.
-
-## Philosophy
-
-> **What if DOM events were just another asynchronous data source?**
-
-Instead of introducing a custom event abstraction, this project explores how far native JavaScript can be taken when async iterators become the primary abstraction for modeling user interactions.
