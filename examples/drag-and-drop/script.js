@@ -1,11 +1,12 @@
-import { on, once, onlyEvent } from './events.js';
-import { filter, every, map, repeat, take } from './transformers.js';
-import { parallel, seq } from './sequence.js';
+import {
+	every, map, on, once, onlyEvent, parallel, repeat, seq
+} from '../../src/index.js'
 
 export function dragAndDrop($el) {
 	const $body = document.body;
 
-	const asyncIterator = repeat(() => map(
+	const eventIterator = repeat(
+		() => map(
 			seq(
 				once($el, 'mousedown'),
 				every(
@@ -23,14 +24,14 @@ export function dragAndDrop($el) {
 	(async function(){
 		let initial
 
-		for await (const [ x, y, action ] of asyncIterator) {
+		for await (const [ x, y, action ] of eventIterator) {
 			switch (action) {
 				case 'mousedown': {
 					initial ??= [ x, y ]
 					break
 				}
 
-				default: {
+				case 'mousemove': {
 					transform($el, x - initial[ 0 ], y - initial[ 1 ])
 				}
 			}
