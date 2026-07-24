@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Drawing Demo</title>
+		<link rel="stylesheet" href="styles.css">
+	</head>
+
+	<body>
+		<div
+			class="hint"
+		>
+			Drag on the canvas to draw with event iterators
+		</div>
+
+		<canvas
+			id="canvas"
+		>
+		</canvas>
+
+		<script type="module">
+			import { drawOnCanvas } from './script.js'
+
+			const $canvas = document.getElementById('canvas')
+			const ctx = $canvas.getContext('2d')
+
+			const resize = () => {
+				const ratio = devicePixelRatio || 1
+
+				$canvas.width = window.innerWidth * ratio
+				$canvas.height = window.innerHeight * ratio
+				$canvas.style.width = `${window.innerWidth}px`
+				$canvas.style.height = `${window.innerHeight}px`
+				ctx.setTransform(ratio, 0, 0, ratio, 0, 0)
+			}
+
+			resize()
+			window.addEventListener('resize', resize)
+
+			drawOnCanvas(
+				$canvas,
+				{
+					color: 'cyan',
+					lineWidth: 4,
+					lineCap: 'round'
+				}
+			)
+		</script>
+	</body>
+</html>
