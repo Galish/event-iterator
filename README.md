@@ -54,8 +54,8 @@ for await (const position of take(5, positions)) {
 
 The repository currently includes several demonstrations of the concept:
 
-* [Drag and Drop Demo](https://galish.github.io/examples/event-iterator/drag-and-drop/demo.html)
-* [Drawing Demo](https://galish.github.io/examples/event-iterator/drawing/demo.html)
+* [Drag and Drop Demo](https://galish.github.io/event-iterator/examples/drag-and-drop/demo.html)
+* [Drawing Demo](https://galish.github.io/event-iterator/examples/drawing/demo.html)
 
 These examples show how common browser interactions can be expressed as asynchronous event sequences rather than collections of event listeners.
 
