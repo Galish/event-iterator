@@ -31,7 +31,7 @@ export function dragAndDrop($el) {
 					break
 				}
 
-				default: {
+				case 'mousemove': {
 					transform($el, x - initial[ 0 ], y - initial[ 1 ])
 				}
 			}
