@@ -1,24 +1,25 @@
 # Drawing Demo
 
-This demo shows how pointer events can be turned into a simple drawing experience with async iteration. It demonstrates how a drawing gesture can be built from a sequence of pointer down, move, and up events.
+This demo shows how pointer events can be turned into a simple drawing experience with async iteration. It uses a repeating event stream to combine pointer down, move, and up events into a declarative drawing loop.
 
 ## What it demonstrates
 
-The example highlights how continuous input can be modeled as a stream of events and transformed into visual updates on a canvas. It is a small illustration of how event-driven interactions can feel more declarative and composable.
+The example highlights how continuous input can be modeled as a stream of events and transformed into visual updates on a canvas. It also demonstrates filtering to only respond to left-button input and supporting configurable drawing options such as color, line width, and line cap.
 
 ## Code
 
 ```js
 const eventIterator = repeat(
 	() => map(
-		seq(
-			once($canvas, 'pointerdown'),
-			every(
-				parallel(
-					on($canvas, 'pointermove'),
-					once($canvas, 'pointerup')
-				),
-				onlyEvent('pointermove')
+		parallel(
+			filter(
+				on($canvas, 'pointerdown'),
+				isLeftButton
+			),
+				on($canvas, 'pointermove'),
+			filter(
+				on($canvas, 'pointerup'),
+				isLeftButton
 			)
 		),
 		({ clientX, clientY, type }) => [type, clientX, clientY]
@@ -26,14 +27,20 @@ const eventIterator = repeat(
 )
 
 for await (const [type, clientX, clientY] of eventIterator) {
-	switch (action) {
+	switch (type) {
 		case 'pointerdown': {
-			// start drawing
+			// begin a new path
 			break
 		}
 
 		case 'pointermove': {
-			// draw line
+			// draw the next segment
+			break
+		}
+
+		case 'pointerup': {
+			// finish the current stroke
+			break
 		}
 	}
 }
@@ -41,7 +48,7 @@ for await (const [type, clientX, clientY] of eventIterator) {
 
 ## Files
 - demo.html — page shell and demo bootstrapping
-- script.js — canvas drawing logic using src/index.js
+- script.js — canvas drawing logic exported as drawOnCanvas($canvas, options = {})
 - styles.css — demo visuals
 
 ## Run

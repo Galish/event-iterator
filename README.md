@@ -48,8 +48,8 @@ The idea is not to replace existing event libraries or frameworks. It is to expl
 
 The repository includes a few interactive examples that demonstrate the concept:
 
-* [Drag and Drop example page](https://galish.github.io/event-iterator/examples/drag-and-drop/) ([demo](https://galish.github.io/event-iterator/examples/drag-and-drop/demo.html))
-* [Drawing example page](https://galish.github.io/event-iterator/examples/drawing/) ([demo](https://galish.github.io/event-iterator/examples/drawing/demo.html))
+* [Drag and Drop example](https://github.com/Galish/event-iterator/tree/main/examples/drag-and-drop) ([demo](https://galish.github.io/event-iterator/examples/drag-and-drop/demo.html))
+* [Drawing example](https://github.com/Galish/event-iterator/tree/main/examples/drawing) ([demo](https://galish.github.io/event-iterator/examples/drawing/demo.html))
 
 These demos show how common browser interactions can be expressed as asynchronous event sequences rather than collections of event listeners.
 
