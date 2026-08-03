@@ -1,6 +1,10 @@
 # Drawing Demo
 
-This demo shows how to use the event iterator library to draw on a canvas.
+This demo shows how pointer events can be turned into a simple drawing experience with async iteration. It demonstrates how a drawing gesture can be built from a sequence of pointer down, move, and up events.
+
+## What it demonstrates
+
+The example highlights how continuous input can be modeled as a stream of events and transformed into visual updates on a canvas. It is a small illustration of how event-driven interactions can feel more declarative and composable.
 
 ## Code
 
@@ -22,18 +26,23 @@ const eventIterator = repeat(
 )
 
 for await (const [type, clientX, clientY] of eventIterator) {
-	if (type === 'pointerdown') {
-		// start drawing
-	} else if (type === 'pointermove') {
-		// draw line
+	switch (action) {
+		case 'pointerdown': {
+			// start drawing
+			break
+		}
+
+		case 'pointermove': {
+			// draw line
+		}
 	}
 }
 ```
 
 ## Files
-- `demo.html` — page shell and demo bootstrapping
-- `script.js` — canvas drawing logic using `src/index.js`
-- `styles.css` — demo visuals
+- demo.html — page shell and demo bootstrapping
+- script.js — canvas drawing logic using src/index.js
+- styles.css — demo visuals
 
 ## Run
-Open `examples/drawing/demo.html` in a browser or run the project via the root `npm start` script and navigate to the demo page.
+Open examples/drawing/demo.html in a browser, or run the project via the root npm start script and navigate to the demo page.
